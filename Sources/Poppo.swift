@@ -1,21 +1,19 @@
 import Foundation
 
 class Poppo: NSObject, URLSessionDelegate{
+
+    let semaphore = DispatchSemaphore(value: 0)
+
     func connect(){
-        let request = URLRequest(url: URL(string: "https://www.google.com")!)
+        let request = URLRequest(url: URL(string: "http://www.example.com/")!)
 
-        let configuration = URLSessionConfiguration()
-        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-        let task = session.dataTask(with: request)
-
-        task.resume()
-    }
-
-    func urlSession(_ session: URLSession, didReceiveChallenge challenge: URLAuthenticationChallenge, completionHandler: (URLSession.AuthChallengeDisposition, URLCredential?) -> Void){
-
-    }
-
-    func urlSession(_ session: URLSession, didBecomeInvalidWithError error: NSError?){
-
+        let configuration = URLSessionConfiguration.default
+        let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
+        session.dataTask(with: request){(data, response, error) in
+            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
+            self.semaphore.signal()
+        }.resume()
+        
+        semaphore.wait()
     }
 }

@@ -21,8 +21,8 @@ Poppo is a simple tweet library for Swift
 
 ## Todo
 
-- [] Loading authorization info from JSON
-- [] macOS support
+- [ ] Loading authorization info from JSON
+- [ ] macOS support
 
 ## Lisence
 

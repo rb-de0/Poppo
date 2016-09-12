@@ -3,21 +3,26 @@ Poppo is a simple tweet library for Swift
 
 ## Prerequisites
 
-### Swift
+#### Swift
 
 - Swift 3.0 DEVELOPMENT-SNAPSHOT-2016-09-06-a
 
-### macOS
+#### macOS
 
 - not supported
 
-### Linux
+#### Linux
 
 - Ubuntu 14.04
 
-### Other
+#### Other
 
 - curl 7.35.0
+
+## Todo
+
+- [] Loading authorization info from JSON
+- [] macOS support
 
 ## Lisence
 

@@ -1,3 +1,4 @@
 
 let poppo = Poppo()
-poppo.connect()
+
+poppo.tweet(status: "foo")

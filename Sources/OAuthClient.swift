@@ -15,7 +15,7 @@ class OAuthClient{
         self.accessToken = accessToken
         self.accessTokenSecret = accessTokenSecret
         
-        self.httpClient = CurlHTTPClient()
+        self.httpClient = URLSessionHTTPClient()
     }
     
     func tweet(status: String){
@@ -102,7 +102,14 @@ extension OAuthClient{
         let upperBound = alphabet.characters.count
         
         return String((0..<length).map { _ -> Character in
-            return alphabet[alphabet.index(alphabet.startIndex, offsetBy: Int(random() % upperBound))]
+            
+            #if os(Linux)
+                let randomValue = random()
+            #else
+                let randomValue = Int(arc4random())
+            #endif
+            
+            return alphabet[alphabet.index(alphabet.startIndex, offsetBy: Int(randomValue % upperBound))]
         }).lowercased()
     }
 }

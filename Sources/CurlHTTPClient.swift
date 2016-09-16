@@ -5,13 +5,19 @@ import Foundation
 class CurlHTTPClient: HTTPClient{
     
     func sendRequest(request: URLRequest){
-        let task = Task()
-        task.launchPath = "/usr/bin/curl"
-        task.arguments = extractArguments(request: request)
+        
+        #if os(Linux)
+        let process = Task()
+        #else
+        let process = Process()
+        #endif
+        
+        process.launchPath = "/usr/bin/curl"
+        process.arguments = extractArguments(request: request)
         
         let pipe = Pipe()
-        task.standardOutput = pipe
-        task.launch()
+        process.standardOutput = pipe
+        process.launch()
         
         let outputData = pipe.fileHandleForReading.readDataToEndOfFile()
         let outputStr = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)

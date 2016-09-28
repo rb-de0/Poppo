@@ -3,12 +3,13 @@ class Poppo{
 
     private let oauthClient: OAuthClient
     
-    init(){
+    init(consumerKey: String, consumerKeySecret: String, accessToken: String, accessTokenSecret: String) {
+        
         oauthClient = OAuthClient(
-            consumerKey: "xxxxxx",
-            consumerKeySecret: "xxxxxx",
-            accessToken: "xxxxx",
-            accessTokenSecret: "xxxx"
+            consumerKey: consumerKey,
+            consumerKeySecret: consumerKeySecret,
+            accessToken: accessToken,
+            accessTokenSecret: accessTokenSecret
         )
     }
         

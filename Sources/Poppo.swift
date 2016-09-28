@@ -1,9 +1,9 @@
 
-class Poppo{
+public class Poppo{
 
     private let oauthClient: OAuthClient
     
-    init(consumerKey: String, consumerKeySecret: String, accessToken: String, accessTokenSecret: String) {
+    public init(consumerKey: String, consumerKeySecret: String, accessToken: String, accessTokenSecret: String) {
         
         oauthClient = OAuthClient(
             consumerKey: consumerKey,
@@ -13,7 +13,7 @@ class Poppo{
         )
     }
         
-    func tweet(status: String){
+    public func tweet(status: String){
         oauthClient.tweet(status: status)
     }
 }

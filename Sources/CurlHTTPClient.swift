@@ -42,9 +42,10 @@ class CurlHTTPClient: HTTPClient{
         }
         
         if let header = request.allHTTPHeaderFields{
-            let headerStr = header.map{$0.0 + ": " + $0.1}.joined(separator: ",")
-            arguments.append("-H")
-            arguments.append("\(headerStr)")
+            for (key, value) in header{
+                arguments.append("-H")
+                arguments.append("\(key): \(value)")
+            }
         }
         
         return arguments

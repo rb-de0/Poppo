@@ -10,7 +10,6 @@ class URLSessionHTTPClient: HTTPClient{
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: request){(data, resp, err) in
-            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue), resp, err)
             self.semaphore.signal()
             
         }

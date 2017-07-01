@@ -7,7 +7,7 @@ class CurlHTTPClient: HTTPClient{
     func sendRequest(request: URLRequest){
         
         #if os(Linux)
-        let process = Task()
+        let process = Process()
         #else
         let process = Process()
         #endif
@@ -21,7 +21,7 @@ class CurlHTTPClient: HTTPClient{
         
         let outputData = pipe.fileHandleForReading.readDataToEndOfFile()
         let outputStr = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)
-        print(outputStr)
+        print(outputStr ?? "")
     }
     
     private func extractArguments(request: URLRequest) -> [String]{

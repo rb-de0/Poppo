@@ -1,5 +1,5 @@
 
-[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg)](https://swift.org)
+[![Swift 3.1](https://img.shields.io/badge/Swift-3.1-orange.svg)](https://swift.org)
 ![Platform Linux, OSX](https://img.shields.io/badge/Platforms-Linux%2C%20OSX-lightgray.svg)
 [![Build Status](https://travis-ci.org/rb-de0/Poppo.svg?branch=master)](https://travis-ci.org/rb-de0/Poppo)
 
@@ -10,11 +10,11 @@ Poppo is a simple tweet library for Swift
 
 #### Swift
 
-- Swift 3.0 Release
+- Swift 3.1
 
 #### macOS
 
-- OS X El Captain 10.11.6
+- macOS Sierra 10.12.2
 
 #### Linux
 

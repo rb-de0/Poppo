@@ -10,11 +10,11 @@ Poppo is a simple tweet library for Swift
 
 #### Swift
 
-- Swift 3.1
+- Swift 3.1 or later
 
 #### macOS
 
-- macOS Sierra 10.12.2
+- macOS Sierra 10.12.2 or later
 
 #### Linux
 

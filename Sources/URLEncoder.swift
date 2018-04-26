@@ -6,7 +6,7 @@ class URLEncoder{
     func encoded(_ target: String) -> String{
         var encodedString = ""
         
-        for code in target.characters {
+        for code in target {
             
             if isUnreserved(String(code)){
                 encodedString += String(code)

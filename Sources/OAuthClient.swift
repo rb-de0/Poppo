@@ -52,7 +52,7 @@ extension OAuthClient{
         var sortedParameter = parameter.sorted{$0.0 < $1.0}
         
         var paramStr = sortedParameter.reduce(""){$0 + "&" + $1.0 + "=" + $1.1}
-        paramStr = paramStr.substring(from: paramStr.index(paramStr.startIndex, offsetBy: 1))
+        paramStr = String(paramStr[paramStr.index(paramStr.startIndex, offsetBy: 1)..<paramStr.endIndex])
         
         let text = api.method + "&" + urlEncode(api.url) + "&" + urlEncode(paramStr)
         let key = urlEncode(consumerKeySecret) + "&" + urlEncode(accessTokenSecret)
@@ -74,7 +74,7 @@ extension OAuthClient{
         sortedParameter = parameter.sorted{$0.0 < $1.0}
         
         var headerStr = sortedParameter.reduce(""){$0 + ", " + $1.0 + "=" + "\"" + urlEncode($1.1) + "\""}
-        headerStr = headerStr.substring(from: headerStr.index(headerStr.startIndex, offsetBy: 2))
+        headerStr = String(headerStr[headerStr.index(headerStr.startIndex, offsetBy: 2)..<headerStr.endIndex])
         headerStr = "OAuth " + headerStr
         
         return headerStr
@@ -99,7 +99,7 @@ extension OAuthClient{
     
     private func randomStringWithLength(length: Int) -> String {
         let alphabet = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        let upperBound = alphabet.characters.count
+        let upperBound = alphabet.count
         
         return String((0..<length).map { _ -> Character in
             

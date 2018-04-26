@@ -1,5 +1,5 @@
 
-[![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg)](https://swift.org)
+[![Swift 4.1](https://img.shields.io/badge/Swift-4.1-orange.svg)](https://swift.org)
 ![Platform Linux, OSX](https://img.shields.io/badge/Platforms-Linux%2C%20OSX-lightgray.svg)
 [![Build Status](https://travis-ci.org/rb-de0/Poppo.svg?branch=master)](https://travis-ci.org/rb-de0/Poppo)
 
@@ -10,11 +10,11 @@ Poppo is a simple tweet library for Swift
 
 #### Swift
 
-- Swift 3.1 or later
+- Swift 4.1 or later
 
 #### macOS
 
-- macOS Sierra 10.12.2 or later
+- macOS Sierra 10.13.4 or later
 
 #### Linux
 
@@ -24,10 +24,6 @@ Poppo is a simple tweet library for Swift
 
 - curl 7.35.0
 
-## Todo
-
-- [ ] Loading authorization info from JSON
-- [x] macOS support
 
 ## Lisence
 

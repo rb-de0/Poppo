@@ -1,5 +1,8 @@
 import Foundation
 import Cryptor
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 class OAuthClient{
     fileprivate let consumerKey: String
@@ -18,7 +21,7 @@ class OAuthClient{
         self.httpClient = URLSessionHTTPClient()
     }
     
-    func tweet(status: String){
+    func tweet(status: String) {
         let api = API.updateStatus
         
         var request = URLRequest(url: URL(string: api.url)!)
@@ -34,7 +37,7 @@ class OAuthClient{
         httpClient.sendRequest(request: request)
     }
     
-    fileprivate func urlEncode(_ target: String) -> String{
+    fileprivate func urlEncode(_ target: String) -> String {
         return URLEncoder().encoded(target)
     }
 }
@@ -42,10 +45,10 @@ class OAuthClient{
 // MARK: - Authorization Header
 extension OAuthClient{
     
-    fileprivate func authorizationHeader(api: API, additionalParam: [String: String]) -> String{
+    fileprivate func authorizationHeader(api: API, additionalParam: [String: String]) -> String {
         var parameter = commonParameter()
         
-        for (key, value) in additionalParam{
+        for (key, value) in additionalParam {
             parameter[key] = value
         }
         
@@ -80,7 +83,7 @@ extension OAuthClient{
         return headerStr
     }
     
-    private func commonParameter() -> [String: String]{
+    private func commonParameter() -> [String: String] {
         var parameter: [String: String] = [:]
         
         parameter["oauth_consumer_key"] = consumerKey
@@ -93,7 +96,7 @@ extension OAuthClient{
         return parameter
     }
     
-    private func timestamp() -> String{
+    private func timestamp() -> String {
         return String(Int(NSDate().timeIntervalSince1970))
     }
     

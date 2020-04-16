@@ -1,8 +1,11 @@
 import Foundation
 import Dispatch
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 // URLSession Client
-class URLSessionHTTPClient: HTTPClient{
+class URLSessionHTTPClient: HTTPClient {
     
     private let semaphore = DispatchSemaphore(value: 0)
     

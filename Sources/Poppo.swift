@@ -1,5 +1,5 @@
 
-public class Poppo{
+public class Poppo {
 
     private let oauthClient: OAuthClient
     
@@ -13,7 +13,7 @@ public class Poppo{
         )
     }
         
-    public func tweet(status: String){
+    public func tweet(status: String) {
         oauthClient.tweet(status: status)
     }
 }

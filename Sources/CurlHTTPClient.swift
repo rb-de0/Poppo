@@ -1,10 +1,12 @@
 import Foundation
-
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 // curl task client
-class CurlHTTPClient: HTTPClient{
+class CurlHTTPClient: HTTPClient {
     
-    func sendRequest(request: URLRequest){
+    func sendRequest(request: URLRequest) {
         
         #if os(Linux)
         let process = Process()
@@ -12,19 +14,23 @@ class CurlHTTPClient: HTTPClient{
         let process = Process()
         #endif
         
-        process.launchPath = "/usr/bin/curl"
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/curl")
         process.arguments = extractArguments(request: request)
         
         let pipe = Pipe()
         process.standardOutput = pipe
-        process.launch()
         
-        let outputData = pipe.fileHandleForReading.readDataToEndOfFile()
-        let outputStr = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)
-        print(outputStr ?? "")
+        do {
+            try process.run()
+            let outputData = pipe.fileHandleForReading.readDataToEndOfFile()
+            let outputStr = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)
+            print(outputStr ?? "")
+        } catch {
+            print(error)
+        }
     }
     
-    private func extractArguments(request: URLRequest) -> [String]{
+    private func extractArguments(request: URLRequest) -> [String] {
         var arguments: [String] = []
         
         if let url = request.url?.absoluteString{

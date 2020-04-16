@@ -5,3 +5,6 @@
 
 Package.pins
 Package.resolved
+
+.swiftpm
+.vagrant

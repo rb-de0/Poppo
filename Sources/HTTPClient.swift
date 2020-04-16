@@ -1,5 +1,8 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
-protocol HTTPClient{
+protocol HTTPClient {
     func sendRequest(request: URLRequest)
 }

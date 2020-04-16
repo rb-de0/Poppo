@@ -1,9 +1,9 @@
-
-class URLEncoder{
-    let unreservedStrings = "-._~"
-    let reservedStrings = "!#$&'()*+,/:;=?@[]"
+class URLEncoder {
     
-    func encoded(_ target: String) -> String{
+    private let unreservedStrings = "-._~"
+    private let reservedStrings = "!#$&'()*+,/:;=?@[]"
+    
+    func encoded(_ target: String) -> String {
         var encodedString = ""
         
         for code in target {
@@ -22,7 +22,7 @@ class URLEncoder{
         return encodedString
     }
     
-    func isUnreserved(_ target: String) -> Bool{
+    private func isUnreserved(_ target: String) -> Bool{
         return (target >= "a" && target <= "z")
             || (target >= "A" && target <= "Z")
             || (target >= "0" && target <= "9")
